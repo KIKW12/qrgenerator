@@ -1,0 +1,13 @@
+# Alternative requirements.txt with minimal versions
+# Use this if the main requirements.txt fails
+
+Flask>=3.0.0
+qrcode>=7.4.0
+Pillow>=10.0.0
+Werkzeug>=3.0.0
+gunicorn>=20.1.0
+
+# Explicitly include dependencies that might cause issues
+setuptools>=65.0.0
+wheel>=0.38.0
+pip>=22.0.0
