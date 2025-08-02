@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}QR Code Generated Successfully{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <div class="text-center mb-4">
+            <h2 class="text-success">
+                <i class="fas fa-check-circle me-2"></i>
+                QR Code Generated Successfully!
+            </h2>
+        </div>
+
+        <div class="qr-result">
+            <div class="mb-4">
+                <h4 class="text-primary">
+                    <i class="fas fa-link me-2"></i>
+                    Redirects to:
+                </h4>
+                <p class="lead">
+                    <a href="{{ url }}" target="_blank" class="text-decoration-none">
+                        {{ url }}
+                        <i class="fas fa-external-link-alt ms-1"></i>
+                    </a>
+                </p>
+            </div>
+
+            <div class="mb-4">
+                <img src="data:image/png;base64,{{ qr_image }}" 
+                     alt="Generated QR Code" 
+                     class="qr-image">
+            </div>
+
+            <div class="d-grid gap-2 d-md-block">
+                <a href="{{ url_for('download_file', filename=download_filename) }}" 
+                   class="btn btn-success btn-lg me-md-2">
+                    <i class="fas fa-download me-2"></i>
+                    Download QR Code
+                </a>
+                <a href="{{ url_for('index') }}" 
+                   class="btn btn-primary btn-lg">
+                    <i class="fas fa-plus me-2"></i>
+                    Create Another
+                </a>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <div class="card border-0 bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fas fa-info-circle text-info me-2"></i>
+                        How to use your QR Code:
+                    </h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2">
+                            <i class="fas fa-mobile-alt text-primary me-2"></i>
+                            Scan with any smartphone camera or QR code app
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-print text-success me-2"></i>
+                            Print on business cards, flyers, or posters
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-share-alt text-warning me-2"></i>
+                            Share digitally on websites or social media
+                        </li>
+                        <li class="mb-0">
+                            <i class="fas fa-eye text-info me-2"></i>
+                            View all your generated codes in the 
+                            <a href="{{ url_for('gallery') }}" class="text-decoration-none">Gallery</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
